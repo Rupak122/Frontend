@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:bean xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation=" http://www.springframework.org/schema/beans 
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/security
+    http://www.springframework.org/schema/security/spring-security.xsd">
+    
+<http auto-config="true">
+	<intercept-url pattern="/Cart/**"
+			access="hasRole('ROLE_USER')" />
+			
+	<intercept-url pattern="/myCart/**"
+			access="hasRole('ROLE_USER')" />
+				<!-- 	<intercept-url pattern="/" access="permitAll" />
+		<intercept-url pattern="/index" access="permitAll" />
+	 -->
+	 <intercept-url pattern="/admin*" access="hasRole('ROLE_ADMIN')" />
+		
+		
+		<form-login login-page="/login"
+		 username-parameter="emailid" password-parameter="password" 
+		 login-processing-url="/logg"
+			authentication-failure-url="/login"
+			default-target-url="/" />
+			
+			
+			
+			
+		<logout logout-url="/logOut" delete-cookies="true"
+		 logout-success-url="/login?logOut" />
+		<csrf disabled="true" />
+	</http>
+	
+	<authentication-manager>
+		<authentication-provider>
+			<jdbc-user-service data-source-ref="dataSource"
+				users-by-username-query="select emailid,password,isactive from Customer where emailid=?"
+				authorities-by-username-query="select username,rolename from authorization where username =?  " />
+		</authentication-provider>
+	</authentication-manager>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+</beans:bean>
