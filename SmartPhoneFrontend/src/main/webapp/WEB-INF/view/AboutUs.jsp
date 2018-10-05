@@ -8,5 +8,5 @@
 </head>
 <body>
 
-</body background="resources/images/sam1.jpg">
+</body>
 </html>

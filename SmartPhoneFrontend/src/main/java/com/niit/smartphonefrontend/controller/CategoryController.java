@@ -34,7 +34,7 @@ public class CategoryController
 			categoryRepository.updateCategory(category);
 		}
 		
-		return "redirect:/Category";
+		return "redirect:/adminCategory";
 	}
 	
 	
@@ -43,10 +43,8 @@ public class CategoryController
 		public String categoryDelete(@PathVariable("id") int categoryId)
 		{
 			categoryRepository.deleteCategory(categoryId);
-			return "redirect:/Category";
+			return "redirect:/adminCategory";
 	}
-	
-	
 	@RequestMapping("/admineditCategory/{id}")
 	
 	public String categoryUpdate(@PathVariable("id") int categoryId,Model model)

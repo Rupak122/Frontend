@@ -1,8 +1,10 @@
  <%@taglib uri="http://www.springframework.org/security/tags" prefix="security" %>
+ <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+ <%@page isELIgnored="false" %>
  <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>${title}</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="resources/styles/bootstrap4/bootstrap.min.css">
@@ -23,34 +25,51 @@
 							<div class="logo"><a href="#">TheGalaxyWorld</a></div>
 							<nav class="main_nav">
 								<ul>
+								<security:authorize access="hasRole('ROLE_USER')">
 									<li>
-										<a href="index">Home</a>
+										<a href="${pageContext.request.contextPath}/index">Home</a>
 										
 									</li>
+									</security:authorize>
+									
 									  <security:authorize access="hasRole('ROLE_ADMIN')">
 									<li class="hassubs">
 										<a href="#">Admin</a>
 										<ul>
-											<li><a href="adminCategory">Add Category</a></li>
-											<li><a href="adminProduct">Add Product</a></li>
+											<li><a href="${pageContext.request.contextPath}/adminCategory">Add Category</a></li>
+											<li><a href="${pageContext.request.contextPath}/adminProduct">Add Product</a></li>
 											
 										</ul>
 									</li>
 									</security:authorize>
+									<li class="hassubs">
+										<a href="#">Products</a>
+										<ul>
+									<li>
+										<c:forEach items="${categoryList}" var="catObject">
+                                          <a href="${pageContext.request.contextPath}/getAllProductsBycategory/${catObject.categoryId }">${catObject.categoryName }</a>
+                                            </c:forEach>
+                                           </li>
+										</ul>
+									</li>
+									
+									
 									<li><a href="#">About Us</a></li>
 									<li><a href="#">Contact Us</a></li>
-									<security:authorize access="isAnonymous()">
-									<li><a href="login">Login</a></li>
-									<li><a href="Signup">Sign Up</a></li>
-									</security:authorize>
+									
+									<li><a href="${pageContext.request.contextPath}/login">Login</a></li>
+									<li><a href="${pageContext.request.contextPath}/Signup">Sign Up</a></li>
+									
 									 <security:authorize access="isAuthenticated()">
-									<li><a href="logOut">Logout</a></li>
+									<li><a href="${pageContext.request.contextPath}/logOut">Logout</a></li>
 									</security:authorize>
 								</ul>
 							</nav>
-							<div class="header_extra ml-auto">
+							
+										
+								<div class="header_extra ml-auto">
 								<div class="shopping_cart">
-									<a href="#">
+									<a href="Cart">
 										<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 												 viewBox="0 0 489 489" style="enable-background:new 0 0 489 489;" xml:space="preserve">
 											<g>
@@ -85,28 +104,16 @@
 									</svg>
 									</div>
 								</div>
+								
 								<div class="hamburger"><i class="fa fa-bars" aria-hidden="true"></i></div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 		
-		<!-- Search Panel -->
-		<div class="search_panel trans_300">
-			<div class="container">
-				<div class="row">
-					<div class="col">
-						<div class="search_panel_content d-flex flex-row align-items-center justify-content-end">
-							<form action="#">
-								<input type="text" class="search_input" placeholder="Search" required="required">
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+		
+		
 
 		<!-- Social -->
 		<div class="header_social">

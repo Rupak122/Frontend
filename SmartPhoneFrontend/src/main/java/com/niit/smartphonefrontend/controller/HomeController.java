@@ -2,6 +2,8 @@ package com.niit.smartphonefrontend.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -26,43 +28,58 @@ public class HomeController
 	@Autowired
 	private ProductRepository productRepository;
 	@RequestMapping("/")
-	public String RootPage()
+	public String RootPage(HttpSession httpSession,Model model)
 	{
+		model.addAttribute("title","GalaxyWorld");
 		return "index";
 	}
 	
 	@RequestMapping("/index")
-	public String homePage()
+	public String homePage(Model model)
 	{
+		model.addAttribute("title","GalaxyWorld");
 		return "index";
 	}
 	
 	@RequestMapping("/AboutUs")
-	public String aboutUsPage()
+	public String aboutUsPage(Model model)
 	{
+		model.addAttribute("title","About Us");
 		return "AboutUs";
 	}
 	
 	@RequestMapping("/adminHome")
-	public String adminPage()
+	public String adminPage(Model model)
 	{
+		model.addAttribute("title","GalaxyWorld");
 		return "AdminHome";
 	}
 	
 	@RequestMapping("/logOut")
-	public String logoutPage()
+	public String logoutPage(Model model)
 	{
+		model.addAttribute("title","Login Page");
 		return "login";
 	}
 	
 	@RequestMapping("/login")
-	public String loginPage()
+	public String loginPage(Model model)
 	{
+		model.addAttribute("title","Login Page");
 		return "login";
 	}
+	
+	@RequestMapping("/Cart")
+	public String CartPage(Model model)
+	{
+		model.addAttribute("title","Cart Page");
+		return "Cart";
+	}
+	
 	@RequestMapping("/Signup")
 	public String signupPage(Model model)
 	{
+		model.addAttribute("title","SignUp Page");
 		model.addAttribute("user",customer);
 		return "SignUp";
 	}
@@ -70,6 +87,7 @@ public class HomeController
 	@RequestMapping("/adminCategory")
 	public String categoryPage(Model model)
 	{  
+		model.addAttribute("title","Category Page");
 		List<Category> allCategories= categoryRepository.getAllCategory();
 		model.addAttribute("cat",category);
 		model.addAttribute("categoryList",allCategories);
@@ -80,6 +98,7 @@ public class HomeController
 	@RequestMapping("/adminProduct")
 	public String productPage(Model model)
 	{  
+		model.addAttribute("title","Product Page");
 		List<Product> allProducts= productRepository.getAllProduct();
 		List<Category> allCategories= categoryRepository.getAllCategory();
 		model.addAttribute("productOBJ",product);

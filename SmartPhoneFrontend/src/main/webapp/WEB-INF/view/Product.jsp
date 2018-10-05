@@ -26,7 +26,7 @@
 <body background="resources/images/sam1.jpg">
 <div class="container">
 <h2 align="center">Add Product</h2><hr>
-<spring:form action="${pageContext.request.contextPath}/adminaddProduct" modelAttribute="productOBJ" method="POST">
+<spring:form action="${pageContext.request.contextPath}/adminaddProduct" modelAttribute="productOBJ" method="POST" enctype="Multipart/form-data">
 <div class="form-group">
 <c:if test="${not empty productOBJ.productName}">
 <label for="pid">Product ID:</label>
@@ -36,19 +36,19 @@
 </div>
 <div class="form-group">
 <label for="pname">Product Name:</label>
- <spring:input type="text" class="form-control" id="pname" path="productName"/>
+ <spring:input type="text" class="form-control" id="pname" path="productName" required="required"/>
  </div>
  <div class="form-group">
  <label for="pdesc">Product Description:</label>
-<spring:input type="text" class="form-control" id="pdesc" path="productDesc"/>
+<spring:input type="text" class="form-control" id="pdesc" path="productDesc" required="required"/>
 </div>
  <div class="form-group">
  <label for="pprice">Product price:</label>
-<spring:input type="number" class="form-control" id="pprice" path="price"/>
+<spring:input type="number" class="form-control" id="pprice" path="price" required="required"/>
 </div>
 <div class="form-group">
 <label for="pQty">Product Quantity:</label>
-<spring:input type="number" class="form-control" id="pQty" path="quantity"/>
+<spring:input type="number" class="form-control" id="pQty" path="quantity" required="required"/>
 </div>
 
 
@@ -61,6 +61,12 @@
 </c:forEach>
 </spring:select>
 </div>
+
+ <div class="form-group">
+ <label for="pimg">Product image:</label>
+<spring:input path="productImage"  class="form-control" id="pimg" type="file" required="required"/>
+</div>
+
 
 <c:if test="${empty productOBJ.productName}"><button type="submit" class="btn btn-outline-success my-2 my-sm-0">ADD</button></c:if>
 <c:if test="${not empty productOBJ.productName}"><button type="submit" class="btn btn-outline-success my-2 my-sm-0">Update</button></c:if>
@@ -97,9 +103,9 @@
 <td>${pro.productDesc}</td>
 <td>${pro.price}</td>
 <td>${pro.quantity}</td>
-<td><a href="editProduct/${pro.productId}">Edit</a></td>
+<td><a href="admineditProduct/${pro.productId}">Edit</a></td>
 
-<td><a href="deleteProduct/${pro.productId}">delete</a></td>
+<td><a href="admindeleteProduct/${pro.productId}">delete</a></td>
 </tr>
 </tbody>
 </c:forEach>

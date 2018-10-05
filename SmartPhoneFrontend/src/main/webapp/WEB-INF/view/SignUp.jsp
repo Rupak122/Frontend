@@ -69,7 +69,7 @@
 
 </style>
 </head>
-<body id="SignUpForm" background="resources/images/sam1.jpg">
+<body id="SignUpForm" >
 <div class="container">
 <br>
 <div class="SignUp-form">
@@ -83,34 +83,34 @@
         <div class="form-group">
 
 
-            <spring:input type="text" class="form-control" id="inputName" placeholder="Enter your Name" path="CustomerName"/>
+            <spring:input type="text" class="form-control" id="inputName" placeholder="Enter your Name" path="CustomerName" required="required"/>
 
         </div>
  <div class="form-group">
 
 
-            <spring:input type="Email" class="form-control" id="inputEmail" placeholder="Enter your Email" path="emailId"/>
+            <spring:input type="Email" class="form-control" id="inputEmail" placeholder="Enter your Email" path="emailId" required="required"/>
 
         </div>
 
         <div class="form-group">
 
-            <spring:input type="password" class="form-control" id="inputPassword" placeholder="Password" path="password"/>
+            <spring:input type="password" class="form-control" id="inputPassword" placeholder="Password" path="password" required="required"/>
 
         </div>
          <div class="form-group">
 
-            <spring:input type="text" class="form-control" id="inputAddress" placeholder="Enter your Address" path="address"/>
+            <spring:input type="text" class="form-control" id="inputAddress" placeholder="Enter your Address" path="address" required="required"/>
 
         </div>
          <div class="form-group">
 
-            <spring:input type="number" class="form-control" id="inputContact" placeholder="Enter your Contact No." path="contactNo"/>
+            <spring:input type="number" class="form-control" id="inputContact" placeholder="Enter your Contact No." path="contactNo" required="required"/>
 
         </div>
         <div class="form-group">
 
-            <spring:input type="date" class="form-control" id="inputDob" placeholder="Enter your Date Of Birth" path="dob"/>
+            <spring:input type="date" class="form-control" id="inputDob" placeholder="Enter your Date Of Birth" path="dob" required="required"/>
 
         </div>
         

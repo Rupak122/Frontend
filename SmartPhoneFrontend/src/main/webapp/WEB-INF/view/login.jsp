@@ -69,8 +69,12 @@
 </style>
 
   </head>
-<body id="LoginForm" background="resources/images/sam1.jpg">
+<body id="LoginForm" background="resources/images/product_5.jpg">
 <div class="container">
+<br>
+<br>
+<br>
+<br>
 <br>
 <div class="login-form">
 <div class="main-div">
@@ -84,13 +88,13 @@
         <div class="form-group">
 
 
-            <input type="email" class="form-control" name="emailid" id="inputEmail" placeholder="Email Address">
+            <input type="email" class="form-control" name="emailid" id="inputEmail" placeholder="Email Address" required="required"/>
 
         </div>
 
         <div class="form-group">
 
-            <input type="password" class="form-control" name="password" id="inputPassword" placeholder="Password">
+            <input type="password" class="form-control" name="password" id="inputPassword" placeholder="Password" required="required"/>
 
         </div>
         <div class="forgot">

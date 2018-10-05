@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+ <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1" isELIgnored="false"%>
     <%@include file="header.jsp"  %>
     <%@taglib uri="http://www.springframework.org/tags/form" prefix="spring" %>
@@ -37,12 +37,12 @@
 </div>
 <div class="form-group">
 <label for="cname">Category Name:</label>
-<spring:input type="text" class="form-control" id="cname" path="categoryName"/>
+<spring:input type="text" class="form-control" id="cname" path="categoryName" required="required"/>
  </div>
  
  <div class="form-group">
 <label for="cdesc">Category Description:</label>
- <spring:input type="text" class="form-control" id="cdesc" path="categoryDesc"/>
+ <spring:input type="text" class="form-control" id="cdesc" path="categoryDesc" required="required"/>
 </div>
 
 
@@ -74,9 +74,9 @@
 <td>${cate.categoryName}</td>
 <td>${cate.categoryDesc}</td>
 
-<td><a href="editCategory/${cate.categoryId}">Edit</a></td>
+<td><a href="admineditCategory/${cate.categoryId}">Edit</a></td>
 
-<td><a href="deleteCategory/${cate.categoryId}">delete</a></td>
+<td><a href="admindeleteCategory/${cate.categoryId}">delete</a></td>
 </tr>
 </tbody>
 </c:forEach>

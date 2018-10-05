@@ -11,7 +11,7 @@
 	<intercept-url pattern="/Cart/**"
 			access="hasRole('ROLE_USER')" />
 			
-	<intercept-url pattern="/myCart/**"
+	<intercept-url pattern="/myCart/addToCart/**"
 			access="hasRole('ROLE_USER')" />
 				<!-- 	<intercept-url pattern="/" access="permitAll" />
 		<intercept-url pattern="/index" access="permitAll" />
